@@ -6,3 +6,9 @@
 export const environment = {
   production: false
 };
+
+export enum SexoEnum {
+  Empty = 0,
+  Masculino = 1,
+  Feminino = 2
+}
