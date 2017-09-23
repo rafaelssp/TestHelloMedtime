@@ -11,6 +11,7 @@ export class FichaComponent implements OnInit {
   @Input() nomeCompleto: string;
   @Input() idade: string;
   @Input() sexo: SexoEnum = SexoEnum.Empty;
+  _id: number;
 
 
   constructor() { }

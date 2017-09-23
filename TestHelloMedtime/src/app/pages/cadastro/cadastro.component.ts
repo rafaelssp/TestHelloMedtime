@@ -39,13 +39,21 @@ export class CadastroComponent implements OnInit {
 
     event.preventDefault();
     let novaFicha = this._service.cadastrar(this.ficha);
+
+    novaFicha._id = this.fichasCadastradas.length + 1;
     this.fichasCadastradas.push(Object.assign({}, novaFicha));
-    console.log(this.fichasCadastradas);
+
     this.resetarFormCadastro();
+  }
+
+  deletar(fichaId) {
+    let ficha = this.fichasCadastradas.filter(x => x._id == fichaId)[0];
+    this.fichasCadastradas = this._service.deletar(this.fichasCadastradas, ficha);
   }
 
   private resetarFormCadastro() {
     this.meuForm.reset();
     this.meuForm.controls["sexo"].setValue("0");
+    this.ficha = new FichaComponent();
   }
 }

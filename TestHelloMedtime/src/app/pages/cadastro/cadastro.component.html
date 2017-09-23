@@ -64,6 +64,7 @@
                         <th>Nome completo</th>
                         <th>Idade</th>
                         <th>Sexo</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,6 +75,14 @@
                         <span *ngIf="item.sexo.length">
                           {{ (item.sexo == 1) ? "Masculino" : "Feminino" }}
                       </span>
+                      </td>
+                      <td>
+                        <botao-padrao 
+                          nome="Remover"
+                          estilo="btn-danger"
+                          (acao)="deletar(item._id)">
+
+                        </botao-padrao>
                       </td>
                     </tr>
                 </tbody>
