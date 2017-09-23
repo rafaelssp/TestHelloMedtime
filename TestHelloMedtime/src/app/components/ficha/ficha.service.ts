@@ -16,4 +16,16 @@ export class FichaService {
     fichasCadastradas.splice(indice, 1);
     return fichasCadastradas;
   }
+
+  alterar(fichasCadastradas: FichaComponent[], fichaAtualizar: FichaComponent): FichaComponent[] {
+    return fichasCadastradas.map(function (param , index) {
+        if (fichasCadastradas[index]._id == fichaAtualizar._id) {
+          fichasCadastradas[index]._id  = fichaAtualizar._id;
+          fichasCadastradas[index].nomeCompleto  = fichaAtualizar.nomeCompleto;
+          fichasCadastradas[index].idade  = fichaAtualizar.idade;
+          fichasCadastradas[index].sexo  = fichaAtualizar.sexo;
+        }
+        return param;
+     });
+  }
 }

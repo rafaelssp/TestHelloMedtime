@@ -1,8 +1,6 @@
 <div class="container">
     <h1 class="text-center">Cadastrar paciente</h1>
     
-    <p *ngIf="mensagemAviso.length" class="alert alert-info">{{ mensagemAviso }}</p>
-    
     <form [formGroup]="meuForm" class="row" (submit)="cadastrar($event)" >
         <div class="col-md-12">
             <div class="form-group">
@@ -32,7 +30,8 @@
                     formControlName="idade"  
                     name="idade" 
                     [(ngModel)]="ficha.idade" 
-                    class="form-control"  
+                    class="form-control"
+                    type="number"
                     autocomplete="off">
                 <span 
                   *ngIf="meuForm.controls.idade.invalid && meuForm.controls.idade.dirty" 
@@ -53,9 +52,13 @@
                   </select>
             </div>
             <a [routerLink]="['']" class="btn btn-warning">Zerar e voltar</a>
-            <botao-padrao nome="Salvar" estilo="btn-primary" tipo="submit" [desabilitado]="meuForm.invalid">
+            <botao-padrao nome="Cadastrar" estilo="btn-primary" tipo="submit" 
+              [desabilitado]="meuForm.invalid || isAlteracao" *ngIf="!isAlteracao">
             </botao-padrao>
-            <hr>
+            <botao-padrao nome="Atualizar" estilo="btn-success" (acao)="alterarFicha()" 
+              [desabilitado]="meuForm.invalid" *ngIf="isAlteracao">
+            </botao-padrao>
+              <hr>
         </div>
         <div class="col-md-12" *ngIf="fichasCadastradas.length">
             <table class="table table-striped">
@@ -72,16 +75,23 @@
                       <td>{{ item.nomeCompleto }}</td>
                       <td>{{ item.idade }}</td>
                       <td >
-                        <span *ngIf="item.sexo.length">
-                          {{ (item.sexo == 1) ? "Masculino" : "Feminino" }}
+                        <span *ngIf="item.sexo.length" [ngSwitch]="item.sexo">
+                          <span *ngSwitchCase="1">Masculino</span>
+                          <span *ngSwitchCase="2">Feminino</span>
                       </span>
                       </td>
                       <td>
                         <botao-padrao 
                           nome="Remover"
                           estilo="btn-danger"
-                          (acao)="deletar(item._id)">
-
+                          (acao)="deletar(item._id)"
+                          [desabilitado]="isAlteracao">
+                        </botao-padrao>
+                        <botao-padrao 
+                          nome="Alterar"
+                          estilo="btn-success"
+                          (acao)="alterar(item)"
+                          [desabilitado]="isAlteracao">
                         </botao-padrao>
                       </td>
                     </tr>
