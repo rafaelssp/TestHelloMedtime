@@ -12,7 +12,7 @@ export class FichaService {
   }
 
   deletar(fichasCadastradas: FichaComponent[], ficha: FichaComponent): FichaComponent[] {
-    var indice = fichasCadastradas.findIndex(f => f._id == ficha._id);
+    let indice = fichasCadastradas.findIndex(f => f._id == ficha._id);
     fichasCadastradas.splice(indice, 1);
     return fichasCadastradas;
   }

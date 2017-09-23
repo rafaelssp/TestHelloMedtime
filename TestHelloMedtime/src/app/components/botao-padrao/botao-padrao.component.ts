@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class BotaoPadraoComponent implements OnInit {
 
   @Input() nome: string = 'Enviar';
-  @Input() estilo: string = 'btn-default';
+  @Input() estilo: string = 'btn-primary';
   @Input() tipo: string = 'button';
   @Input() desabilitado: boolean = false;
   @Output() acao = new EventEmitter();
