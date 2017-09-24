@@ -10,6 +10,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { AppComponent } from './app.component';
 import { BotaoPadraoComponent } from './components/botao-padrao/botao-padrao.component';
 import { FichaComponent } from './components/ficha/ficha.component';
+import { FiltroNomePipe } from './components/ficha/filtro-nome.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FichaComponent } from './components/ficha/ficha.component';
     BotaoPadraoComponent,
     IndexComponent,
     CadastroComponent,
-    FichaComponent
+    FichaComponent,
+    FiltroNomePipe
   ],
   imports: [
     BrowserModule,

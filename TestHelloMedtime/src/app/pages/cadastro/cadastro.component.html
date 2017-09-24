@@ -68,10 +68,16 @@
                         <th>Idade</th>
                         <th>Sexo</th>
                         <th>Ações</th>
+                        <div class="visible-md-block visible-lg-block left-table-filter">
+                            <input #filtroNome
+                            (keyup)="0"
+                            placeholder="Filtrar pelo nome"
+                            class="form-control">
+                        </div>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of fichasCadastradas">
+                    <tr *ngFor="let item of fichasCadastradas | filtraFichaNome: filtroNome.value">
                       <td>{{ item.nomeCompleto }}</td>
                       <td>{{ item.idade }}</td>
                       <td >
