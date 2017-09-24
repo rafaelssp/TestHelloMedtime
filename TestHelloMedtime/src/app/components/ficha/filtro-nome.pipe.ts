@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { FichaComponent } from '../../components/ficha/ficha.component';
 
 @Pipe({
-  name: 'filtraFichaNome'
+  name: 'filtraFichaNome',
+  pure: false
 })
 export class FiltroNomePipe implements PipeTransform {
 
@@ -11,5 +12,4 @@ export class FiltroNomePipe implements PipeTransform {
     nome = nome.toUpperCase();
     return fichas.filter(f => f.nomeCompleto.toUpperCase().includes(nome));
   }
-
 }
